@@ -27,6 +27,8 @@ public class Server_mess{
 				System.out.println();
 			}
 			
+			ss.close();
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();

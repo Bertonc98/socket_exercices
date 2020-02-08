@@ -15,6 +15,7 @@ public class server_base{
 			System.out.println("Server local port: " + client.getLocalPort());
 			System.out.println("Client connected port: " + client.getPort());
 			Thread.sleep(5000);
+			ss.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

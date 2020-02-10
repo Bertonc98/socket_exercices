@@ -7,7 +7,7 @@ public class client_base{
 	public static void main(String[] args){
 		if(args.length==1){
 			int port = Integer.parseInt(args[0]);
-			Socket client = new Socket();
+			Socket client = new Socket(); //contiene LocalAddres: localhost (127.0.0.1)  Porta: #portaEffimera ---- Dest / Porta dest
 			
 			try{
 				InetSocketAddress isa = new InetSocketAddress("localhost", port);

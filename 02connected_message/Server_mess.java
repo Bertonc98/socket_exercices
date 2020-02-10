@@ -15,7 +15,7 @@ public class Server_mess{
 		try{
 			ss = new ServerSocket(0);
 			System.out.println("Server open on port: " + ss.getLocalPort());
-			client = ss. accept();
+			client = ss.accept();
 			InputStream fromC = client.getInputStream();
 			letti = fromC.read(buffer);
 			if(letti<=0)

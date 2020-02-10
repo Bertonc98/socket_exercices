@@ -24,8 +24,8 @@ public class Stazione{
 				int treno, ritardo;
 				while(true){
 					System.out.print("Insert train number: ");
+					tmp = bf.readLine();
 					try{
-						tmp = bf.readLine();
 						treno = Integer.parseInt(tmp);
 					}
 					catch(NumberFormatException nfe){
@@ -34,13 +34,22 @@ public class Stazione{
 							toS.send(dp);
 							break;
 						}
-						else
+						else{
+							System.out.println("Wrong format");
 							continue;
+						}
 					}
 					if(treno>9 || treno<1)
 						continue;
 					System.out.print("Insert minutes of late: ");
-					ritardo = Integer.parseInt(bf.readLine());
+					tmp = bf.readLine();
+					try{
+						ritardo = Integer.parseInt(tmp);
+					}
+					catch(NumberFormatException nfe){
+						System.out.println("Wrong format");
+						continue;
+					}
 					message = treno + "@" + ritardo;
 					dp = new DatagramPacket(message.getBytes(), 0, message.length(), ia, port);
 					toS.send(dp);

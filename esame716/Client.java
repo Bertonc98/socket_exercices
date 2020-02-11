@@ -29,6 +29,7 @@ public class Client{
 				InputStream in = toS.getInputStream();
 				OutputStream out = toS.getOutputStream();
 				int i=0;
+				//Ciclo finchè non c'è carattere di uscita o un eccezione
 				while(!exit){
 					//Ciclo per input dell'operatore
 					while(i<3 && !exit){
@@ -56,23 +57,23 @@ public class Client{
 							}
 							continue;
 						}
-						System.out.println("Prossimo");
+						//Se l'input è stato validato dal server si passa al prossimo
 						i++;
-						if(i>2)
-							exit=true;
+						if(i>2){
+							System.out.println("Attesa risultato");
+							letti = in.read(buffer);
+							if(letti<=0){
+								throw new IOException();
+							}
+							System.out.println("Risultato: " + (new String(buffer, 0, letti)));
+							i=0;
+							exit = false;						
+						}
 					}
 					if(exit){
 						out.write(".".getBytes(), 0, ".".length());
 						break;
 					}
-				}
-				if(i>2){
-					System.out.println("Attesa risultato");
-					letti = in.read(buffer);
-					if(letti<=0){
-						throw new IOException();
-					}
-					System.out.println("Risultato: " + (new String(buffer, 0, letti)));
 				}
 				toS.close();
 			}
